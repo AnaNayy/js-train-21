@@ -249,7 +249,7 @@ class Band {
   #members;
   constructor(name, members) {
     this.#name = name;
-    this.#members = members;
+    this.#members = [...members];
   }
   get name() {
     return this.#name;
@@ -262,7 +262,7 @@ class Band {
   }
   addMember(newMember) {
     if (newMember instanceof Musician) {
-      newMember.band = this;
+      newMember.band = this.#name;
       this.#members.push(newMember);
     } else {
       console.log("Новий учасник повинен бути екземпляром класу Musician");
